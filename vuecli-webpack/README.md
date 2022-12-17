@@ -1,4 +1,4 @@
-# vue
+# vuecli-webpack
 
 ## Project setup
 ```
