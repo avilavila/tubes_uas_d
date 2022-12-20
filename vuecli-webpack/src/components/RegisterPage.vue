@@ -12,6 +12,9 @@
                         <v-card-text class="pt-4">
                             <div>
                                 <v-form v-model="valid" ref="form">
+                                    <v-text-field label="Name" v-model="name" :rules="nameRules" required>
+                                    </v-text-field>
+                                    
                                     <v-text-field label="Username" v-model="username" :rules="usernameRules" required>
                                     </v-text-field>
 
@@ -22,16 +25,20 @@
                                         :rules="passwordRules" required>
                                     </v-text-field>
 
-                                    <v-layout>
-                                        <v-btn class="mr-3 mt-3" @click="submit" :class="{
+                                    <v-layout justify-center>
+                                        <v-btn class="mr2" @click="submit" :class="{
                                             'green white--text': valid, disabled: !valid
                                         }">Register
                                         </v-btn>
 
-                                        <v-btn @click="home" class="blue darken-3 white--text mt-3">Back
-
-                                        </v-btn>
-
+                                        <v-btn @click="clear" class="grey darken-3 white--text">Clear</v-btn>
+                                    </v-layout>
+                                    
+                                    <v-layout justify-center class="pt-3">
+                                    <v-text class="black--text"
+                                        >Already Have Account?
+                                        <v-btn @click="register" text color="indigo accent-4">Login</v-btn>
+                                    </v-text>
                                     </v-layout>
                                 </v-form>
                             </div>
@@ -48,7 +55,7 @@
   
 <script>
 export default {
-    name: "RegisterMenu",
+    name: "RegisterPage",
     data() {
         return {
             load: false,
@@ -56,6 +63,8 @@ export default {
             error_message: '',
             color: '',
             valid: false,
+            name: "",
+            nameRules: [(v) => !!v || "Nama Tidak boleh Kosong"],
             username: '',
             usernameRules: [(v) => !!v || "Username tidak boleh kosong"],
             password: '',
@@ -70,33 +79,39 @@ export default {
                 this.load = true;
                 this.$http
                     .post(this.$api + '/register', {
+                        name: this.name,
                         username: this.username,
                         email: this.email,
                         password: this.password,
-                        tgllahir: this.tgllahir,
                     })
                     .then((response) => {
+                        localStorage.setItem("id", response.data.user.id);
+                        localStorage.setItem("token", response.data.access_token);
                         this.error_message = response.data.message;
                         this.color = "green";
                         this.snackbar = true;
                         this.load = false;
                         this.clear();
                         this.$router.push({
-                            name: "LoginMenu",
+                        name: "LoginPage",
                         });
                     })
                     .catch((error) => {
                         this.error_message = error.response.data.message;
                         this.color = "red";
                         this.snackbar = true;
+                        localStorage.removeItem("token");
                         this.load = false;
                     })
             }
         },
-        home() {
+        register() {
             this.$router.push({
-                name: "HomeDashboard",
+                name: "LoginPage",
             });
+        },
+        clear() {
+            this.$refs.form.reset(); 
         },
     },
 };

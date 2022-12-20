@@ -13,24 +13,16 @@
                         <v-card-text class="pt-4">
                             <div>
                                 <v-form v-model="valid" ref="form">
-                                    <v-text-field label="E-mail" v-model="email" :rules="emailRules"
-                                        required></v-text-field>
-                                    <v-text-field label="Password" v-model="password" type="password"
-                                        :rules="passwordRules" required>
-                                    </v-text-field>
-                                    <v-layout>
-                                        <v-btn class="mr-3 mt-3" @click="submit" :class="{
-                                            'blue white--text': valid, disabled: !valid
-                                        }">Login
-                                        </v-btn>
-
-                                        <v-btn @click="regis" class="green white--text mt-3">Register
-                                        </v-btn>
-
-                                        <v-btn @click="home" class="blue darken-3 white--text mt-3">Back
-                                        </v-btn>
-
-                                    </v-layout>
+                                    <v-text-field label="E-mail" v-model="email" :rules="emailRules" required></v-text-field>
+                                    <v-text-field label="Password" v-model="password" type="password" min="8" :rules="passwordRules" counter required></v-text-field>
+                                   
+                                        <v-layout justify-center>
+                                            <v-btn class="mr-3 mt-5" @click="submit" :class="{ 'black darken-1 orange--text': valid, disabled: !valid }">Login</v-btn>
+                                            <v-btn @click="clear" class="grey darken-3 white--text mt-5">Clear</v-btn>
+                                        </v-layout>
+                                            <v-layout justify-center class="pt-3 mt-5">
+                                            <v-text>Dont have any account? <v-btn @click="register" text color="indigo accent-4">Register</v-btn></v-text>
+                                        </v-layout>
                                 </v-form>
                             </div>
                         </v-card-text>
@@ -70,8 +62,7 @@ export default {
         submit() {
             if (this.$refs.form.validate()) {
                 this.load = true;
-                this.$http
-                    .post(this.$api + "/loginpage", {
+                this.$http.post(this.$api + "/login", {
                         email: this.email,
                         password: this.password,
                     })
@@ -96,26 +87,22 @@ export default {
                     });
             }
         },
-        Verif() {
-            if (this.$route.query.verified == "success") {
-                this.success = true;
-                this.$router.push("/loginpage");
-            }
-        },
-
-        home() {
-            this.$router.push({
-                name: "HomeDashboard",
-            });
-        },
-
-        mounted() {
-            this.Verif();
-        },
-        regis() {
+        register() {
             this.$router.push({
                 name: "RegisterPage",
-            })
+            });
+        },
+        showVerified() {
+            if (this.$route.query.verified == "success") {
+                this.success = true;
+                this.$router.push("/login");
+            }
+        },
+        clear() {
+            this.$refs.form.reset(); // clear form login
+        },
+        mounted() {
+            this.showVerified();
         },
     }
 };

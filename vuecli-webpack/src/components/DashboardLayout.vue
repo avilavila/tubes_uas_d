@@ -27,13 +27,14 @@
       </div>
     </div>
   </template>
-  <script>
+
+<script>
   export default {
     name: "DashboardLayout",
     data() {
       return {
+        users: [],
         drawer: false,
-      group: null,
         items: [
           { title: "DashboardIndex", to: "/dashboardindex" },
           { title: "Produk", to: "/produk" },
@@ -41,8 +42,34 @@
         ],
       };
     },
-  };
-  </script>
+    methods: {
+    logout() {
+      localStorage.removeItem("id");
+      localStorage.removeItem("token");
+      location.reload();
+      this.$router.push({
+        name: "HomeDashboard",
+      });
+    },
+    readData() {
+      var url = this.$api + "/getuser/" + localStorage.getItem("id");
+      this.$http
+        .get(url, {
+          headers: {
+            Authorization: "Bearer" + localStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          this.users = response.data.data;
+        });
+    },
+  },
+
+  mounted() {
+    this.readData();
+  },
+};
+</script>
   <style scoped>
   .fullheight {
     min-height: 100vh !important;
