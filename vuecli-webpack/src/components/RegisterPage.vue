@@ -3,7 +3,7 @@
         <v-container fluid fill-height class="bg">
             <v-layout flex align-center justify-center>
                 <v-flex xs12 sm6 elevation-6>
-                    <v-toolbar class="orange darken-3">
+                    <v-toolbar class="green darken-3">
                         <v-toolbar-title>
                             <h1>Register Page</h1>
                         </v-toolbar-title>
@@ -87,7 +87,7 @@ export default {
                     .then((response) => {
                         localStorage.setItem("id", response.data.user.id);
                         localStorage.setItem("token", response.data.access_token);
-                        this.error_message = response.data.message;
+                        this.error_message = "Register Berhasil!";
                         this.color = "green";
                         this.snackbar = true;
                         this.load = false;

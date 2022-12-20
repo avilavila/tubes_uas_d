@@ -36,10 +36,20 @@ Route::apiResource('/produks',App\Http\Controllers\ProdukController::class);
 
 Route::apiResource('/announcements',App\Http\Controllers\AnnouncementController::class);
 
-// Route::group(['middleware' => 'auth:api'], function() {
-//     Route::get('announcement', 'Api\AnnouncementController@index');
-//     Route::get('announcement/{id}', 'Api\AnnouncementController@show');
-//     Route::post('announcement', 'Api\AnnouncementController@store');
-//     Route::put('announcement/{id}', 'Api\AnnouncementController@update');
-//     Route::delete('announcement/{id}', 'Api\AnnouncementController@destroy');
+Route::group(['middleware' => 'auth:api'], function() {
+
+    Route::get('announcement', 'Api\AnnouncementController@index');
+    Route::get('announcement/{id}', 'Api\AnnouncementController@show');
+    Route::post('announcement', 'Api\AnnouncementController@store');
+    Route::put('announcement/{id}', 'Api\AnnouncementController@update');
+    Route::delete('announcement/{id}', 'Api\AnnouncementController@destroy');
+    
+    Route::get('logout', 'Api\AuthController@logout');
+});
+
+// Route::middleware('auth:api')->post('/logout', function (Request $request){
+//     $request->user()->token()->delete();
+//     return response([
+//         'message' => 'Success Logout'
+//     ]);
 // });

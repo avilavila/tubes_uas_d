@@ -3,7 +3,7 @@
         <v-container fluid fill-height class="bg">
             <v-layout flex align-center justify-center>
                 <v-flex xs12 sm6 elevation-6>
-                    <v-toolbar class="orange darken-3">
+                    <v-toolbar class="green darken-3">
                         <v-toolbar-title>
                             <h1>Login Page</h1>
                         </v-toolbar-title>
@@ -17,7 +17,7 @@
                                     <v-text-field label="Password" v-model="password" type="password" min="8" :rules="passwordRules" counter required></v-text-field>
                                    
                                         <v-layout justify-center>
-                                            <v-btn class="mr-3 mt-5" @click="submit" :class="{ 'black darken-1 orange--text': valid, disabled: !valid }">Login</v-btn>
+                                            <v-btn class="mr-3 mt-5" @click="submit" :class="{ 'black darken-1 green--text': valid, disabled: !valid }">Login</v-btn>
                                             <v-btn @click="clear" class="grey darken-3 white--text mt-5">Clear</v-btn>
                                         </v-layout>
                                             <v-layout justify-center class="pt-3 mt-5">
@@ -69,14 +69,24 @@ export default {
                     .then((response) => {
                         localStorage.setItem("id", response.data.user.id);
                         localStorage.setItem("token", response.data.access_token);
-                        this.error_message = response.data.message;
+                        this.error_message = "Login Berhasil!";
                         this.color = "green";
                         this.snackbar = true;
                         this.load = false;
-                        this.clear();
-                        this.$router.push({
-                            name: "DashboardIndex",
-                        });
+                        if(this.email == "admin@gmail.com" && this.password == "admin"){
+                            this.clear();
+                            this.$router.push({
+                                name: "DashboardIndexAdmin",
+                            });
+                        } else {
+                            this.clear();
+                            this.$router.push({
+                                name: "DashboardIndex",
+                            });
+                        }
+                        
+                        
+                        
                     })
                     .catch((error) => {
                         this.error_message = error.response.data.message;

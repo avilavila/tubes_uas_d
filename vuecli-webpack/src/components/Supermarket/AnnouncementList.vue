@@ -19,18 +19,18 @@
                   style="margin-top: 30px"
                 ></v-text-field>
                 <v-spacer></v-spacer>
-                <v-btn color="success" dark @click="dialogTambah = true"> Tambah </v-btn>
+                <!-- <v-btn color="success" dark @click="dialogTambah = true"> Tambah </v-btn> -->
             </v-card-title>
         </v-card>
         <v-card>
             <v-data-table :headers="headers" :items="announcements" :search="search">
-              <template v-slot:[`item.actions`]="{ item }">
+              <!-- <template v-slot:[`item.actions`]="{ item }">
                 <v-btn small fab dark class="mr-2 red" @click="setFormEdit(item)"><v-icon dark>mdi-pencil-circle</v-icon></v-btn>
                 <v-btn small fab dark class="mr-2 green" @click="setDelete(item)"><v-icon dark>mdi-delete-circle</v-icon></v-btn>
-              </template>
+              </template> -->
             </v-data-table>
         </v-card>
-        <v-dialog v-model="dialogTambah" persistent max-width="600px">
+        <!-- <v-dialog v-model="dialogTambah" persistent max-width="600px">
         <v-card>
             <v-card-title>
                 <span class="headline"> ANNOUNCEMENT </span>
@@ -113,7 +113,7 @@
                 <v-btn color="red" text @click="no"> NO </v-btn>
             </v-card-actions>
         </v-card>
-        </v-dialog>
+        </v-dialog> -->
     </v-main>
 </template>
 
@@ -136,7 +136,7 @@ export default {
                 },
                 { text: "Keterangan", value: "keterangan" },
                 { text: "Status", value: "status" },
-                { text: "Actions", value: "actions" },
+                // { text: "Actions", value: "actions" },
             ],
             announcements: [
                 {

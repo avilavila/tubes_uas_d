@@ -55,6 +55,31 @@ const router = new VueRouter({
 
       
     },
+    {
+      path: "/DashboardLayoutAdmin",
+      component: importComponent("Admin/Dashboard/DashboardLayout"),
+      children: [
+        //Dashboard
+        {
+          path: "/dashboardindexadmin",
+          name: "DashboardIndexAdmin",
+          meta: { title: "DashboardIndexAdmin" },
+          component: importComponent("Admin/Dashboard/DashboardIndex"),
+        },
+
+        //Announcement
+        { 
+          path: "/announcementAdmin",
+          name: "AnnouncementAdmin",
+          meta: { title: "AnnouncementAdmin" },
+          component: importComponent("Admin/Supermarket/AnnouncementList"),
+        },
+
+
+      ],
+
+      
+    },
   ],
 });
 

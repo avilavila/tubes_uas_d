@@ -46,9 +46,9 @@
         data: [
           {
             src: "https://image.freepik.com/free-vector/supermarket_182089-133.jpg",
-            heading: " Market ",
+            heading: " MAROL ",
             subHeading:
-              "Infographic hypotheses influencer user experience Long madel ture gen-z paradigm shift client partner network product seilans solve management influencer analytics leverage virality. incubator seed round massmarket. buyer agile development growth hacking business-to-consumer ecosystem ",
+              "Mager? Belanja aja di MAROL! Supermarket Online serba ada, lengkap, dan murah! Kualitas terjamin, harga sesuai, pengiriman kilat. YUK! Tunggu apa lagi?",
           },
 
         ],

@@ -19,8 +19,3 @@ Route::get('/', function () {
 
 Route::resource('/produk',
 \App\Http\Controllers\ProdukController::class);
-
-Route::resource('/announcement',
-\App\Http\Controllers\AnnouncementController::class);
-
-Route::get('/announcement', 'App\Http\Controllers\AnnouncementController@index')->name('announcement.index');

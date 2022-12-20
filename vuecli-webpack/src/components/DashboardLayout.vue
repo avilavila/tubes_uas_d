@@ -3,7 +3,7 @@
       <v-navigation-drawer class="fullheight" width="256" v-model="drawer" absolute temporary color="grey lighten-5">
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title class="title">TUBES UAS</v-list-item-title>
+            <v-list-item-title class="title">SUPERMARKET</v-list-item-title>
             <v-list-item-subtitle>Kelompok D</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
@@ -11,16 +11,22 @@
         <v-divider></v-divider>
   
         <v-list dense nav>
-          <v-list-item v-for="item in items" :key="item.title" link color="light-blue darken-4" tag="router-link" :to="item.to">
+          <v-list-item v-for="item in items" :key="item.title" link color="light-green darken-4" tag="router-link" :to="item.to">
             <v-list-item-content>
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-app-bar color="red lighten-3" dark>
+
+      <v-app-bar color="green lighten-3" dark>
         <v-app-bar-nav-icon @click="drawer = true" color="white"></v-app-bar-nav-icon>
         <VSpacer />
+
+        <v-toolbar-items>
+        <v-btn text router @click="logout()" color="white"><v-icon>mdi-power</v-icon></v-btn>
+      </v-toolbar-items>
+
       </v-app-bar>
       <div class="fullheight pa-5">
         <router-view></router-view>
@@ -36,7 +42,7 @@
         users: [],
         drawer: false,
         items: [
-          { title: "DashboardIndex", to: "/dashboardindex" },
+          { title: "Dashboard", to: "/dashboardindex" },
           { title: "Produk", to: "/produk" },
           { title: "Announcement", to: "/announcement" },
         ],
@@ -46,7 +52,7 @@
     logout() {
       localStorage.removeItem("id");
       localStorage.removeItem("token");
-      location.reload();
+      //location.reload();
       this.$router.push({
         name: "HomeDashboard",
       });
