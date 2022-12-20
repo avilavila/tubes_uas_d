@@ -29,13 +29,13 @@
   </template>
   <script>
   export default {
-    name: "DashboardIndex",
+    name: "DashboardLayout",
     data() {
       return {
         drawer: false,
       group: null,
         items: [
-          { title: "Dashboard", to: "/" },
+          { title: "DashboardIndex", to: "/dashboardindex" },
           { title: "Produk", to: "/produk" },
           { title: "Announcement", to: "/announcement" },
         ],
