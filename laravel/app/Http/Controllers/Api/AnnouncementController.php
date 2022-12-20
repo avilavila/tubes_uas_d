@@ -37,13 +37,13 @@ class AnnouncementController extends Controller
         } 
 
         return response([
-            'message' => 'Announcements Not Found',
+            'message' => 'Pengumuman tidak ditemukan!',
             'data' => null
         ], 404); 
     }
 
     public function store(Request $request){
-        $announcementData = $request->all();
+        $storeData = $request->all();
         $validate = Validator::make($storeData, [
             'nama_produk' => 'required',
             'status' => 'required',
@@ -56,7 +56,7 @@ class AnnouncementController extends Controller
 
         $announcement = Announcement::create($storeData);
         return response([
-            'message' => 'Add Announcement Success',
+            'message' => 'Berhasil menambahkan pengumuman!',
             'data' => $announcement
         ], 200); 
     }
@@ -66,20 +66,20 @@ class AnnouncementController extends Controller
 
         if(is_null($announcement)){
             return response([
-                'message' => 'Announcement Not Found',
+                'message' => 'Pengumuman tidak ditemukan!',
                 'data' => null
             ], 404); 
         }
 
         if($announcement->delete()){
             return response([
-                'message' => 'Delete Announcement Success',
+                'message' => 'Berhasil menghapus pengumuman!',
                 'data' => $announcement
             ], 200);
         } 
 
         return response([
-            'message' => 'Delete Announcement Failed',
+            'message' => 'Gagal menghapus pengumuman!',
             'data' => null,
         ], 400); 
     }
@@ -89,7 +89,7 @@ class AnnouncementController extends Controller
 
         if(is_null($announcement)){
             return response([
-                'message' => 'Announcement Not Found',
+                'message' => 'Pengumuman tidak ditemukan!',
                 'data' => null
             ], 404); 
         }
@@ -110,13 +110,13 @@ class AnnouncementController extends Controller
 
         if($announcement->save()){
             return response([
-                'message' => 'Update Announcement Success',
+                'message' => 'Berhasil mengupdate pengumuman!',
                 'data' => $announcement
             ], 200);
         }
 
         return response([
-            'message' => 'Update Announcement Failed',
+            'message' => 'Gagal mengupdate pengumuman!',
             'data' => null,
         ], 400); 
     }

@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EmailVerificationController;
+use App\Http\Controllers\EmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +34,6 @@ Route::get('/email/verify/success', function () {
 
 Route::apiResource('/produks',App\Http\Controllers\ProdukController::class);
 
-Route::apiResource('/announcements',App\Http\Controllers\AnnouncementController::class);
 
 Route::group(['middleware' => 'auth:api'], function() {
 
