@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Beli as AppBeli;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Beli;
 
 class BeliController extends Controller
 {
     public function index(){
-        $belis = AppBeli::all();
+        $belis = Beli::all();
 
         if(count($belis) > 0){
             return response([
@@ -26,76 +26,54 @@ class BeliController extends Controller
         ], 400); 
     }
 
-    public function show($id){
-        $belis = AppBeli::find($id);
-
-        if(!is_null($belis)){
-            return response([
-                'message' => 'Retrieve Success',
-                'data' => $belis
-            ], 200);
-        } 
-
-        return response([
-            'message' => 'Tidak ditemukan!',
-            'data' => null
-        ], 404); 
-    }
-
     public function store(Request $request){
         $storeData = $request->all();
         $validate = Validator::make($storeData, [
             'nama' => 'required',
             'nama_produk' => 'required',
-            'jumlah' => 'required'
+            'jumlah' => 'required',
         ]); 
 
         if($validate->fails())
             return response(['message' => $validate->errors()], 400);
+        
 
-        $beli = AppBeli::create($storeData);
+        $beli = Beli::create($storeData);
         return response([
-            'message' => 'Berhasil menambahkan Beli!',
+            'message' => 'Berhasil menambahkan pembelian!',
             'data' => $beli
         ], 200); 
     }
 
-    public function destroy($id){
-        $beli = AppBeli::find($id);
+    public function show($id){
+        $beli = Beli::find($id);
 
-        if(is_null($beli)){
+        if(!is_null($belis)){
             return response([
-                'message' => 'Tidak ditemukan!',
-                'data' => null
-            ], 404); 
-        }
-
-        if($beli->delete()){
-            return response([
-                'message' => 'Berhasil menghapus Beli!',
+                'message' => 'Retrieve Beli Success',
                 'data' => $beli
             ], 200);
         } 
 
         return response([
-            'message' => 'Gagal menghapus!',
-            'data' => null,
-        ], 400); 
+            'message' => 'Pembelian tidak ditemukan!',
+            'data' => null
+        ], 404); 
     }
 
     public function update(Request $request, $id){
-        $beli = AppBeli::find($id);
+        $beli = Beli::find($id);
 
         if(is_null($beli)){
             return response([
-                'message' => 'Tidak ditemukan!',
+                'message' => 'Pembelian tidak ditemukan!',
                 'data' => null
             ], 404); 
         }
 
         $updateData = $request->all();
         $validate = Validator::make($updateData, [
-            'nama' => 'required',
+            'nama' => ['required'],
             'nama_produk' => 'required',
             'jumlah' => 'required'
         ]);
@@ -109,13 +87,36 @@ class BeliController extends Controller
 
         if($beli->save()){
             return response([
-                'message' => 'Berhasil mengupdate Beli!',
+                'message' => 'Berhasil mengupdate pembelian!',
                 'data' => $beli
             ], 200);
         }
 
         return response([
-            'message' => 'Gagal mengupdate!',
+            'message' => 'Gagal mengupdate pembelian!',
+            'data' => null,
+        ], 400); 
+    }
+
+    public function destroy($id){
+        $beli = Beli::find($id);
+
+        if(is_null($beli)){
+            return response([
+                'message' => 'Pembelian tidak ditemukan!',
+                'data' => null
+            ], 404); 
+        }
+
+        if($beli->delete()){
+            return response([
+                'message' => 'Berhasil menghapus pembelian!',
+                'data' => $beli
+            ], 200);
+        } 
+
+        return response([
+            'message' => 'Gagal menghapus pembelian!',
             'data' => null,
         ], 400); 
     }
