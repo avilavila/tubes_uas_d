@@ -77,7 +77,7 @@ export default {
   methods: {
     reserve() {
       this.$router.push({
-        name: "Produk",
+        name: "ProdukAdmin",
       });
     },
   },
