@@ -45,6 +45,7 @@
           { title: "Dashboard Admin", to: "/dashboardindexAdmin" },
           { title: "Produk Admin", to: "/produkAdmin" },
           { title: "Announcement Admin", to: "/announcementAdmin" },
+          { title: "Keranjang Admin", to: "/keranjangAdmin" },
         ],
       };
     },

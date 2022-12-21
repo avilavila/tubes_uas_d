@@ -45,8 +45,8 @@ class BeliController extends Controller
     public function store(Request $request){
         $storeData = $request->all();
         $validate = Validator::make($storeData, [
-            'id_user' => 'required',
-            'id_produk' => 'required',
+            'nama' => 'required',
+            'nama_produk' => 'required',
             'jumlah' => 'required'
         ]); 
 
@@ -95,16 +95,16 @@ class BeliController extends Controller
 
         $updateData = $request->all();
         $validate = Validator::make($updateData, [
-            'id_user' => 'required',
-            'id_produk' => 'required',
+            'nama' => 'required',
+            'nama_produk' => 'required',
             'jumlah' => 'required'
         ]);
 
         if($validate->fails())
             return response(['message' => $validate->errors()], 400);
 
-        $beli->id_user = $updateData['id_user'];
-        $beli->id_produk = $updateData['id_produk'];
+        $beli->nama = $updateData['nama'];
+        $beli->nama_produk = $updateData['nama_produk'];
         $beli->jumlah = $updateData['jumlah'];
 
         if($beli->save()){

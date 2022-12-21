@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('belis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->unsignedBigInteger('id_produk');
-            $table->foreign('id_produk')->references('id')->on('produks');
+            $table->string('nama');
+            $table->string('nama_produk');
             $table->integer('jumlah');
             $table->timestamps();
         });

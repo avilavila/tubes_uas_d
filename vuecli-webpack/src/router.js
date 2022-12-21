@@ -100,6 +100,14 @@ const router = new VueRouter({
           component: importComponent("Admin/Supermarket/ProdukList"),
         },
 
+        //Beli
+        {
+          path: "/keranjangAdmin",
+          name: "KeranjangAdmin",
+          meta: { title: "KeranjangAdmin" },
+          component: importComponent("Admin/Supermarket/KeranjangList"),
+        },
+
 
       ],
 
