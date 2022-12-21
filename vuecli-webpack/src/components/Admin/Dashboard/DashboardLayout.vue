@@ -43,7 +43,7 @@
         drawer: false,
         items: [
           { title: "Dashboard Admin", to: "/dashboardindexAdmin" },
-          // { title: "Produk", to: "/produk" },
+          { title: "Produk Admin", to: "/produkAdmin" },
           { title: "Announcement Admin", to: "/announcementAdmin" },
         ],
       };

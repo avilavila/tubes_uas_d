@@ -32,7 +32,7 @@ Route::get('/email/verify/success', function () {
 });
 
 
-Route::apiResource('/produks',App\Http\Controllers\ProdukController::class);
+//Route::apiResource('/produks',App\Http\Controllers\ProdukController::class);
 
 
 Route::group(['middleware' => 'auth:api'], function() {
@@ -42,6 +42,12 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('announcement', 'Api\AnnouncementController@store');
     Route::put('announcement/{id}', 'Api\AnnouncementController@update');
     Route::delete('announcement/{id}', 'Api\AnnouncementController@destroy');
+
+    Route::get('produk', 'Api\ProdukController@index');
+    Route::get('produk/{id}', 'Api\ProdukController@show');
+    Route::post('produk', 'Api\ProdukController@store');
+    Route::put('produk/{id}', 'Api\ProdukController@update');
+    Route::delete('produk/{id}', 'Api\ProdukController@destroy');
     
     Route::get('logout', 'Api\AuthController@logout');
 });

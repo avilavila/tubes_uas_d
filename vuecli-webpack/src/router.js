@@ -50,6 +50,14 @@ const router = new VueRouter({
           component: importComponent("Supermarket/AnnouncementList"),
         },
 
+         //Produk
+        {
+          path: "/produk",
+          name: "Produk",
+          meta: { title: "Produk" },
+          component: importComponent("Supermarket/ProdukList"),
+        },
+
 
       ],
 
@@ -73,6 +81,15 @@ const router = new VueRouter({
           name: "AnnouncementAdmin",
           meta: { title: "AnnouncementAdmin" },
           component: importComponent("Admin/Supermarket/AnnouncementList"),
+        },
+
+
+         //Produk
+         {
+          path: "/produkAdmin",
+          name: "ProdukAdmin",
+          meta: { title: "ProdukAdmin" },
+          component: importComponent("Admin/Supermarket/ProdukList"),
         },
 
 
