@@ -45,6 +45,7 @@
           { title: "Dashboard", to: "/dashboardindex" },
           { title: "Produk", to: "/produk" },
           { title: "Announcement", to: "/announcement" },
+          { title: "Keranjang", to: "/keranjang" },
         ],
       };
     },

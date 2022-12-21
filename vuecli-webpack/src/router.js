@@ -57,6 +57,14 @@ const router = new VueRouter({
           meta: { title: "Produk" },
           component: importComponent("Supermarket/ProdukList"),
         },
+        
+         //Beli
+        {
+          path: "/keranjang",
+          name: "Keranjang",
+          meta: { title: "Keranjang" },
+          component: importComponent("Supermarket/KeranjangList"),
+        },
 
 
       ],

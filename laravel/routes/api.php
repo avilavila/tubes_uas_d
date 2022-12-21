@@ -48,6 +48,12 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('produk', 'Api\ProdukController@store');
     Route::put('produk/{id}', 'Api\ProdukController@update');
     Route::delete('produk/{id}', 'Api\ProdukController@destroy');
+
+    Route::get('beli', 'Api\BeliController@index');
+    Route::get('beli/{id}', 'Api\BeliController@show');
+    Route::post('beli', 'Api\BeliController@store');
+    Route::put('beli/{id}', 'Api\BeliController@update');
+    Route::delete('beli/{id}', 'Api\BeliController@destroy');
     
     Route::get('logout', 'Api\AuthController@logout');
 });
