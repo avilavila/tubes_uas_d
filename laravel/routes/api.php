@@ -54,6 +54,11 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('beli', 'Api\BeliController@store');
     Route::put('beli/{id}', 'Api\BeliController@update');
     Route::delete('beli/{id}', 'Api\BeliController@destroy');
+
+    Route::get('userprofile/{id}','Api\UserController@index');
+    Route::get('user/{id}', 'Api\UserController@show');
+    Route::put('userupdate/{id}','Api\UserController@update');
+    Route::delete('user/{id}', 'Api\UserController@destroy');
     
     Route::get('logout', 'Api\AuthController@logout');
 });

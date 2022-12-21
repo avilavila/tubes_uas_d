@@ -10,7 +10,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function getuser($id){
+    public function index($id){
         $user = User::find($id);
 
         if(!is_null($user)){
@@ -21,7 +21,7 @@ class UserController extends Controller
         }
 
         return response([
-            'message' => 'User Not Found',
+            'message' => 'User tidak ditemukan!',
             'data' => null
         ], 404);
     }
@@ -45,18 +45,18 @@ class UserController extends Controller
         }
 
         return response([
-            'message' => 'User Not Found',
+            'message' => 'User tidak ditemukan!',
             'data' => null
         ], 404);
     }
 
 
-    public function updateprofile(Request $request, $id){
+    public function update(Request $request, $id){
         $user = User::find($id);
 
         if(is_null($user)){
             return response([
-                'message' => 'User Not Found',
+                'message' => 'User tidak ditemukan!',
                 'data' => null
             ],404);
         }
@@ -77,13 +77,13 @@ class UserController extends Controller
         
         if($user->save()){
             return response([
-            'message' => 'Update User Success',
+            'message' => 'Berhasil mengupdate akun profile!',
             'data' => $user,
             ],200);
         }
 
         return response([
-            'message' => 'Update User Failed',
+            'message' => 'Gagal mengupdate akun profile!',
             'data' => null
         ],400);
     }
@@ -100,20 +100,20 @@ class UserController extends Controller
 
         if(is_null($user)){
             return response([
-                'message' => 'User Not Found',
+                'message' => 'User tidak ditemukan!',
                 'data' => null
             ], 404);
         }
 
         if($user->delete()){
             return response([
-                'message' => 'Delete User Success',
+                'message' => 'Berhasil menghapus akun!',
                 'data' => $user
             ], 200);
         }
 
         return response([
-            'message' => 'Delete User Failed',
+            'message' => 'Gagal menghapus akun!',
             'data' => null
         ], 400);
     }

@@ -43,6 +43,7 @@
         drawer: false,
         items: [
           { title: "Dashboard", to: "/dashboardindex" },
+          { title: "Profile", to: "/user" },
           { title: "Produk", to: "/produk" },
           { title: "Announcement", to: "/announcement" },
           { title: "Keranjang", to: "/keranjang" },

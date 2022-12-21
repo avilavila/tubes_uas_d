@@ -66,6 +66,13 @@ const router = new VueRouter({
           component: importComponent("Supermarket/KeranjangList"),
         },
 
+        //Profile
+        { 
+          path: "/user",
+          name: "ProfileUser",
+          meta: { title: "ProfileUser" },
+          component: importComponent("Supermarket/ProfileUser"),
+        },
 
       ],
 
@@ -108,6 +115,13 @@ const router = new VueRouter({
           component: importComponent("Admin/Supermarket/KeranjangList"),
         },
 
+        //Profile
+        { 
+          path: "/profileAdmin",
+          name: "ProfileAdmin",
+          meta: { title: "ProfileAdmin" },
+          component: importComponent("Admin/Supermarket/ProfileAdmin"),
+        },
 
       ],
 

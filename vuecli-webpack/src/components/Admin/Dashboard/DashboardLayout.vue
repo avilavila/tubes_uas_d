@@ -43,6 +43,7 @@
         drawer: false,
         items: [
           { title: "Dashboard Admin", to: "/dashboardindexAdmin" },
+          { title: "Profile Admin", to: "/profileAdmin" },
           { title: "Produk Admin", to: "/produkAdmin" },
           { title: "Announcement Admin", to: "/announcementAdmin" },
           { title: "Keranjang Admin", to: "/keranjangAdmin" },
