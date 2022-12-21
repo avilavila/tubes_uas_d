@@ -49,10 +49,15 @@
 export default {
   data: () => ({
     cards: [
-      { title: "Oreo", src: "https://cdn-asset.jawapos.com/wp-content/uploads/2022/12/oreo-chandra.jpg", flex: 3 },
-      { title: "Ultra Milk", src: "https://cf.shopee.co.id/file/8d89f6a1bc98492d499caa1d5f08dc1c", flex: 3 },
-      { title: "Lemonilo", src: "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2022/1/28/7e02dc36-2047-434b-92a9-60047544491a.jpg", flex: 3 },
-      { title: "Indomie", src: "https://awsimages.detik.net.id/community/media/visual/2019/11/11/8b3c99cb-6527-4163-99f9-f6fbce370511_169.jpeg?w=700&q=90", flex: 3 },
+      { title: "Oreo", src: "https://cdn-asset.jawapos.com/wp-content/uploads/2022/12/oreo-chandra.jpg", flex: 4 },
+      { title: "Ultra Milk", src: "https://cf.shopee.co.id/file/8d89f6a1bc98492d499caa1d5f08dc1c", flex: 4 },
+      { title: "Lemonilo", src: "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2022/1/28/7e02dc36-2047-434b-92a9-60047544491a.jpg", flex: 4 },
+      { title: "Indomie", src: "https://awsimages.detik.net.id/community/media/visual/2019/11/11/8b3c99cb-6527-4163-99f9-f6fbce370511_169.jpeg?w=700&q=90", flex: 4 },
+      { title: "Buah", src: "https://rsuppersahabatan.co.id/assets/cms/uploads/images/ARTIKEL/3899749277.jpg", flex: 4 },
+      { title: "Aqua", src: "https://ik.imagekit.io/waters2021/sehataqua/uploads/20220901145115_original.png?tr=q-50", flex: 4 },
+      { title: "Beras", src: "https://cdn1-production-images-kly.akamaized.net/Cq0JGcRlrWieYHAMv_GwG5gufEM=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/2914926/original/005311900_1568795429-2019-09-18.jpg", flex: 4 },
+      { title: "Roti", src: "https://www.astronauts.id/blog/wp-content/uploads/2022/09/HOKKAIDO-MILK-BREAD-2-1024x683.jpg", flex: 4 },
+      { title: "Boncabe", src: "https://cf.shopee.co.id/file/6243e4f5e5952f1fa7fae1233ffd3580", flex: 4 },
     ],
     data: [
       {
