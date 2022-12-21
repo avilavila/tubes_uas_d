@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Announcement;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Announcement;
 
 class AnnouncementController extends Controller
 {
@@ -24,22 +24,6 @@ class AnnouncementController extends Controller
             'message' => 'Empty',
             'data' => null
         ], 400); 
-    }
-
-    public function show($id){
-        $announcement = Announcement::find($id);
-
-        if(!is_null($announcements)){
-            return response([
-                'message' => 'Retrieve Announcement Success',
-                'data' => $announcement
-            ], 200);
-        } 
-
-        return response([
-            'message' => 'Pengumuman tidak ditemukan!',
-            'data' => null
-        ], 404); 
     }
 
     public function store(Request $request){
@@ -61,27 +45,20 @@ class AnnouncementController extends Controller
         ], 200); 
     }
 
-    public function destroy($id){
+    public function show($id){
         $announcement = Announcement::find($id);
 
-        if(is_null($announcement)){
+        if(!is_null($announcements)){
             return response([
-                'message' => 'Pengumuman tidak ditemukan!',
-                'data' => null
-            ], 404); 
-        }
-
-        if($announcement->delete()){
-            return response([
-                'message' => 'Berhasil menghapus pengumuman!',
+                'message' => 'Retrieve Announcement Success',
                 'data' => $announcement
             ], 200);
         } 
 
         return response([
-            'message' => 'Gagal menghapus pengumuman!',
-            'data' => null,
-        ], 400); 
+            'message' => 'Pengumuman tidak ditemukan!',
+            'data' => null
+        ], 404); 
     }
 
     public function update(Request $request, $id){
@@ -117,6 +94,29 @@ class AnnouncementController extends Controller
 
         return response([
             'message' => 'Gagal mengupdate pengumuman!',
+            'data' => null,
+        ], 400); 
+    }
+
+    public function destroy($id){
+        $announcement = Announcement::find($id);
+
+        if(is_null($announcement)){
+            return response([
+                'message' => 'Pengumuman tidak ditemukan!',
+                'data' => null
+            ], 404); 
+        }
+
+        if($announcement->delete()){
+            return response([
+                'message' => 'Berhasil menghapus pengumuman!',
+                'data' => $announcement
+            ], 200);
+        } 
+
+        return response([
+            'message' => 'Gagal menghapus pengumuman!',
             'data' => null,
         ], 400); 
     }
